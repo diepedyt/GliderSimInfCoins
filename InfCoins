@@ -1,0 +1,33 @@
+task.spawn(
+    function()
+        while task.wait() do
+            for i, v in pairs(game:GetService("Workspace").Collectables:GetDescendants()) do
+                if v:FindFirstChild("Weight") and v.Name ~= "BoostBoost" then
+                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.Weight.CFrame
+                    print("Running")
+                    game:GetService("RunService").Heartbeat:wait()
+                end
+            end
+        end
+    end
+)
+
+task.spawn(
+    function()
+        while task.wait() do
+            local button =game:GetService("Players").LocalPlayer.PlayerGui.OnScreen.FlightStuffWindow.Contents.Speedo.GapIt.TextButton
+
+            local events = {"MouseButton1Click", "MouseButton1Down", "Activated"}
+            local vs = game:GetService("VirtualUser")
+
+            vs:SetKeyDown(" ")
+            wait()
+            vs:SetKeyUp(" ")
+            for i, v in pairs(events) do
+                for i, v in pairs(getconnections(button[v])) do
+                    v:Fire()
+                end
+            end
+        end
+    end
+)
