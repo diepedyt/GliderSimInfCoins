@@ -3,7 +3,7 @@ task.spawn(
         while task.wait() do
             for i, v in pairs(game:GetService("Workspace").Collectables:GetDescendants()) do
                 if v:FindFirstChild("Weight") and v.Name ~= "BoostBoost" then
-                    game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart").CFrame = v.Weight.CFrame
+                    game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart").CFrame = v:FindFirstChild("Weight").CFrame
                     print("Running")
                     game:GetService("RunService").Heartbeat:wait()
                 end
